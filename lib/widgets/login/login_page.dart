@@ -14,8 +14,8 @@ class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void loginWthGoogle(BuildContext context) {
-    context.read<AutenticationService>().signInWithGoogle();
+  Future<void> loginWithGoogle(BuildContext context) async {
+    await context.read<AutenticationService>().signInWithGoogle();
   }
 
   Future<void> loginWithEmail(BuildContext context) async {
@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
             child: SignInButton(
               Buttons.Google,
               text: "Sign in with Google",
-              onPressed: () => loginWthGoogle(context),
+              onPressed: () => loginWithGoogle(context),
             ),
           ),
         ],
