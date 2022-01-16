@@ -19,6 +19,15 @@ class AutenticationService {
     }
   }
 
+  Future<String> signOut() async {
+    try {
+      await _firebaseAuth.signOut();
+      return "Signed out";
+    } on FirebaseAuthException catch (e) {
+      return e.message as String;
+    }
+  }
+
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

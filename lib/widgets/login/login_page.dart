@@ -22,11 +22,16 @@ class _LoginPageState extends State<LoginPage> {
     String email = emailController.text;
     String password = passwordController.text;
 
-    String output = await context
+    await context
         .read<AutenticationService>()
         .signIn(email: email, password: password);
+  }
 
-    print(output);
+  Future<void> registerWithEmail(BuildContext context) async {
+    String email = emailController.text;
+    String password = passwordController.text;
+
+    await context.read<AutenticationService>().signUp(email, password);
   }
 
   @override
@@ -82,20 +87,30 @@ class _LoginPageState extends State<LoginPage> {
             width: MediaQuery.of(context).size.width * 0.5 < 300
                 ? 300
                 : MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(bottom: 32),
             child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 16) *
-                        0.5,
+                    const EdgeInsets.only(right: 8, left: 8, top: 16) * 0.5,
                 child: TextButton(
                     child: const Text("Login"),
                     onPressed: () => loginWithEmail(context))),
           ),
           Container(
+            width: MediaQuery.of(context).size.width * 0.5 < 300
+                ? 300
+                : MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.only(bottom: 32),
+            child: Padding(
+                padding:
+                    const EdgeInsets.only(top: 8, left: 8, bottom: 16) * 0.5,
+                child: TextButton(
+                    child: const Text("Register"),
+                    onPressed: () => registerWithEmail(context))),
+          ),
+          Container(
             height: 60,
             child: SignInButton(
               Buttons.Google,
-              text: "Logg in med Google",
+              text: "Sign in with Google",
               onPressed: () => loginWthGoogle(context),
             ),
           ),

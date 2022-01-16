@@ -37,9 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
             appBar: AppBar(
-              title: Text("Hai"),
+              title: const Center(child: Text("Haik")),
             ),
-            body: AuthenticationWrapper()),
+            body: AuthenticationWrapper(child: Text(""))),
       ),
     );
   }
