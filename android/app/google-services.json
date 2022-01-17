@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "902266079428",
+    "project_id": "haik-e557d",
+    "storage_bucket": "haik-e557d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902266079428:android:7d5687346dd3662fc56191",
+        "android_client_info": {
+          "package_name": "com.example.haikapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902266079428-l09lmaus6c9c2cmq7opse7ne71n5rgqe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.haikapp",
+            "certificate_hash": "9ccdc6fa899194465b985d6fc65caf6951851287"
+          }
+        },
+        {
+          "client_id": "902266079428-8qugofd6ibfaarjq5mgjtrkt2bu8pekn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATmlCpT3WZ79Douq3V8ZzP2PdAurHVE0I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902266079428-8qugofd6ibfaarjq5mgjtrkt2bu8pekn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "902266079428-otq65tm50d19s0duagd18edb6h514qlb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.haik.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

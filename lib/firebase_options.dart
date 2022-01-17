@@ -61,7 +61,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '902266079428',
     projectId: 'haik-e557d',
     storageBucket: 'haik-e557d.appspot.com',
-    iosClientId: '902266079428-otq65tm50d19s0duagd18edb6h514qlb.apps.googleusercontent.com',
-    iosBundleId: 'io.haik.app',
+    iosClientId:
+        '902266079428-otq65tm50d19s0duagd18edb6h514qlb.apps.googleusercontent.com',
+    iosBundleId: 'com.example.haikapp',
   );
 }
