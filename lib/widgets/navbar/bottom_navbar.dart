@@ -10,7 +10,6 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 0;
   final routes = [
     HomeScreen.routeName,
     TripsScreen.routeName,
@@ -18,15 +17,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ];
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
     Navigator.pushReplacementNamed(context, routes[index]);
   }
 
   @override
   Widget build(BuildContext context) {
+    String _routename = ModalRoute.of(context)!.settings.name as String;
+    int _routeIndex = routes.indexWhere((element) => element == _routename);
+
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -42,7 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           label: 'My pages',
         ),
       ],
-      currentIndex: _selectedIndex,
+      currentIndex: _routeIndex,
       selectedItemColor: Colors.white,
       unselectedItemColor: Colors.white70,
       backgroundColor: Theme.of(context).primaryColor,
