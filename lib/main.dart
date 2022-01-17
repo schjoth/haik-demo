@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:haikapp/screens/home_screen.dart';
+import 'package:haikapp/screens/my_pages_screen.dart';
+import 'package:haikapp/screens/trips_screen.dart';
 import 'package:haikapp/wrappers/authentication_wrapper.dart';
 import 'package:provider/provider.dart';
 
@@ -21,27 +24,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        Provider<AutenticationService>(
-          create: (_) => AutenticationService(FirebaseAuth.instance),
-        ),
-        StreamProvider(
-            initialData: null,
-            create: (context) =>
-                context.read<AutenticationService>().authStateChanges),
-      ],
-      child: MaterialApp(
-        title: 'Haik app',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Center(child: Text("Haik")),
+        providers: [
+          Provider<AutenticationService>(
+            create: (_) => AutenticationService(FirebaseAuth.instance),
+          ),
+          StreamProvider(
+              initialData: null,
+              create: (context) =>
+                  context.read<AutenticationService>().authStateChanges),
+        ],
+        child: MaterialApp(
+            title: 'Haik app',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
             ),
-            body: AuthenticationWrapper(child: Text(""))),
-      ),
-    );
+            routes: {
+              HomeScreen.routeName: (context) =>
+                  const AuthenticationWrapper(child: HomeScreen()),
+              TripsScreen.routeName: (context) =>
+                  const AuthenticationWrapper(child: TripsScreen()),
+              MyPagesScreen.routeName: (context) =>
+                  const AuthenticationWrapper(child: MyPagesScreen()),
+            }));
   }
 }
 
