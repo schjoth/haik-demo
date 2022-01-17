@@ -1,4 +1,4 @@
-package io.haik.app
+package com.example.haikapp
 
 import io.flutter.embedding.android.FlutterActivity
 
