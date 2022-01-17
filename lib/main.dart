@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:haikapp/models/trip_model.dart';
+import 'package:haikapp/providers/database_service.dart';
 import 'package:haikapp/screens/home_screen.dart';
 import 'package:haikapp/screens/my_pages_screen.dart';
 import 'package:haikapp/screens/trips_screen.dart';
@@ -28,10 +31,17 @@ class MyApp extends StatelessWidget {
           Provider<AutenticationService>(
             create: (_) => AutenticationService(FirebaseAuth.instance),
           ),
+          Provider<DatabaseService>(
+            create: (_) => DatabaseService(FirebaseFirestore.instance),
+          ),
           StreamProvider(
               initialData: null,
               create: (context) =>
                   context.read<AutenticationService>().authStateChanges),
+          StreamProvider<List<TripModel>>(
+              initialData: [],
+              create: (context) =>
+                  context.read<DatabaseService>().streamTrips())
         ],
         child: MaterialApp(
             title: 'Haik app',
