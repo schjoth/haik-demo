@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:haikapp/screens/home_screen.dart';
 import 'package:haikapp/screens/my_pages_screen.dart';
 import 'package:haikapp/screens/trips_screen.dart';
+import 'package:haikapp/widgets/navbar/bottom_navbar.dart';
 import 'package:haikapp/wrappers/authentication_wrapper.dart';
 import 'package:provider/provider.dart';
 
@@ -34,10 +35,33 @@ class MyApp extends StatelessWidget {
                   context.read<AutenticationService>().authStateChanges),
         ],
         child: MaterialApp(
-            title: 'Haik app',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
+          title: 'Haik app',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          builder: (context, _) => Scaffold(
+              appBar: AppBar(
+                title: const Center(child: Text("Haik")),
+              ),
+              body: Overlay(initialEntries: [
+                OverlayEntry(
+                  builder: (_) => Navigator(
+                    initialRoute: HomeScreen.routeName,
+                    onGenerateRoute: (settings) {
+                      switch (settings.name) {
+                        case HomeScreen.routeName:
+                          return MaterialPageRoute(
+                              builder: (_) => const HomeScreen());
+                        default:
+                          return MaterialPageRoute(
+                              builder: (_) => const HomeScreen());
+                      }
+                    },
+                  ),
+                )
+              ]),
+              bottomNavigationBar: const BottomNavBar()),
+          /*
             routes: {
               HomeScreen.routeName: (context) =>
                   const AuthenticationWrapper(child: HomeScreen()),
@@ -45,7 +69,8 @@ class MyApp extends StatelessWidget {
                   const AuthenticationWrapper(child: TripsScreen()),
               MyPagesScreen.routeName: (context) =>
                   const AuthenticationWrapper(child: MyPagesScreen()),
-            }));
+            })*/
+        ));
   }
 }
 
