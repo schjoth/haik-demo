@@ -10,4 +10,8 @@ class UserInformationModel {
       birthday: data["birthday"] ?? "",
     );
   }
+
+  Map<String, Object?> toJson() {
+    return {"name": name, "birthday": birthday};
+  }
 }

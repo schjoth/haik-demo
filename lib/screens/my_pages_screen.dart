@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haikapp/widgets/update_user/update_user_information.dart';
 
 class MyPagesScreen extends StatelessWidget {
   static const String routeName = "/my-pages";
@@ -7,8 +8,6 @@ class MyPagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("My pages"),
-    );
+    return Center(child: UpdateUserInformation());
   }
 }
