@@ -18,6 +18,13 @@ class DatabaseService {
     }
   }
 
+  Future<void> updateUserInformation(
+      String id, UserInformationModel userInfo) async {
+    try {
+      await _db.collection("userInformation").doc(id).update(userInfo.toJson());
+    } catch (e) {}
+  }
+
   // trips
   Stream<List<TripModel>> streamTrips() {
     return _db
