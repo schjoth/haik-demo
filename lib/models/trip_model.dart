@@ -19,12 +19,15 @@ class TripModel {
       required this.price});
 
   factory TripModel.fromMap({required Map data}) {
+    final dateFromFirestore = data["date"] != null
+        ? DateTime.parse(data["date"].toDate().toString())
+        : DateTime.now();
     return TripModel(
       driverId: data["driver"] ?? "",
       passengerId: data["passenger"],
       from: data["from"] ?? "",
       to: data["to"] ?? "",
-      date: DateTime.parse(data["date"] ?? ""),
+      date: dateFromFirestore,
       kilometers: data["kilometers"] ?? 0,
       price: data["price"] ?? 0,
     );
