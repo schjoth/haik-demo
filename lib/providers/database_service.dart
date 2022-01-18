@@ -34,4 +34,10 @@ class DatabaseService {
               return TripModel.fromMap(data: doc.data());
             }).toList());
   }
+
+  Future<void> createTrip(TripModel trip) async {
+    try {
+      await _db.collection("trips").add(trip.toJson());
+    } catch (e) {}
+  }
 }

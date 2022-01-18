@@ -40,6 +40,12 @@ class _UpdateUserInformationState extends State<UpdateUserInformation> {
   }
 
   @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final authUser = context.watch<User?>();
     return Center(

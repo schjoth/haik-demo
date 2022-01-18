@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haikapp/widgets/trips/create_trips.dart';
 import 'package:haikapp/widgets/update_user/update_user_information.dart';
 
 class MyPagesScreen extends StatelessWidget {
@@ -8,6 +9,9 @@ class MyPagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: UpdateUserInformation());
+    return SingleChildScrollView(
+        child: Column(
+      children: [UpdateUserInformation(), CreateTrips()],
+    ));
   }
 }
