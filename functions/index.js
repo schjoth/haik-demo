@@ -33,7 +33,6 @@ exports.getMyTrips = functions.https.onRequest(async (req, res) => {
   }
 
   try {
-      functions.logger.log('Token', idToken);
     const decodedIdToken = await admin.auth().verifyIdToken(idToken);
     functions.logger.log('ID Token correctly decoded', decodedIdToken);
     req.user = decodedIdToken;
